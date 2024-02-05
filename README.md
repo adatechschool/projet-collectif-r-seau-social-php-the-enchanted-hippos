@@ -1,1 +1,1 @@
-# projet-collectif-r-seau-social-php-the-enchanted-hippos
+# Projet collectif réseau social PHP - The Enchanted Hippos

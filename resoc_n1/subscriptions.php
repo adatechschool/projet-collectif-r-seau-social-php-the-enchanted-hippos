@@ -30,10 +30,9 @@
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez la liste des personnes dont
-                        l'utilisatrice
+                    <p>Voici la liste des Êtres que l’utilisatrice
                         n° <?php echo intval($_GET['user_id']) ?>
-                        suit les messages
+                        suit.
                     </p>
 
                 </section>
@@ -55,12 +54,16 @@
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 // Etape 4: à vous de jouer
                 //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
+                while ($followedUser = $lesInformations->fetch_assoc())
+                {
+                    echo "<pre>" . print_r($followedUser,1) . "</pre>";
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>
-                    <h3>Alexandra</h3>
-                    <p>id:654</p>                    
+                    <h3><?php echo $followedUser["alias"] ?></h3>
+                    <p><?php echo $followedUser["id"] ?></p>                    
                 </article>
+              <?php } ?>
             </main>
         </div>
     </body>

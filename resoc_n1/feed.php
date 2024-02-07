@@ -37,12 +37,7 @@
              */
             $userId = intval($_GET['user_id']);
             ?>
-            <?php
-            /**
-             * Etape 2: se connecter à la base de donnée
-             */
-            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
-            ?>
+          <?php include 'connexionBd.php'; ?>
 
             <aside>
                 <?php
@@ -75,7 +70,8 @@
                     posts.created,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist, 
+                    GROUP_CONCAT(DISTINCT tags.id) AS tagid
                     FROM followers 
                     JOIN users ON users.id=followers.followed_user_id
                     JOIN posts ON posts.user_id=users.id
@@ -96,30 +92,21 @@
                  * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
                  * A vous de retrouver comment faire la boucle while de parcours...
                  */
-                while ($followers=$lesInformations->fetch_assoc())
+                while ($post=$lesInformations->fetch_assoc())
                     {
-                        echo "<pre>" . print_r($followers,1) . "</pre>";
+                        echo "<pre>" . print_r($post,1) . "</pre>";
                     
 
                 ?>                
                 <article>
                         <h3>
-                            <time datetime='2020-02-01 11:12:13' ><?php echo $followers['created'] ?></time>
+                            <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
                         </h3>
-                        <address>par <?php echo $followers['author_name'] ?></address>
+                        <address>par <?php echo $post['author_name'] ?></address>
                         <div>
-                            <p><?php echo $followers['content'] ?></p>
+                            <p><?php echo $post['content'] ?></p>
                         </div>                                            
-                        <footer>
-                            <small>♥ <?php echo $followers['like_number'] ?></small>
-                            <?php
-                                $tagArray = explode(",", $followers['taglist']);
-                                for ($i = 0; $i < sizeof($tagArray); $i++) {
-                                    echo "<a href=''>";
-                                    echo "#" . $tagArray[$i] . " " . "</a>";
-                                }
-                             ?>
-                        </footer>
+                        <footer><?php include 'footer.php';?></footer>
                     </article>
                 <?php
                 }

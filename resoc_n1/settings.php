@@ -47,15 +47,16 @@
                  * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
                  */
                 $userId = intval($_GET['user_id']);
-
+                ?>
                 /**
                  * Etape 2: se connecter à la base de donnée
                  */
-                $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+                <?php include 'connexionBd.php'; ?>
 
                 /**
                  * Etape 3: récupérer le nom de l'utilisateur
                  */
+                 <?php
                 $laQuestionEnSql = "
                     SELECT users.*, 
                     count(DISTINCT posts.id) as totalpost, 

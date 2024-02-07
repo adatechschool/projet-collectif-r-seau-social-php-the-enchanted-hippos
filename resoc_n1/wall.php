@@ -36,12 +36,7 @@
              */
             $userId =intval($_GET['user_id']);
             ?>
-            <?php
-            /**
-             * Etape 2: se connecter à la base de donnée
-             */
-            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
-            ?>
+            <?php include 'connexionBd.php'; ?>
 
             <aside>
                 <?php
@@ -69,7 +64,9 @@
                  */
                 $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name, 
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    COUNT(likes.id) as like_number, 
+                    GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist, 
+                    GROUP_CONCAT(DISTINCT tags.id) AS tagid
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
@@ -101,16 +98,7 @@
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>                                            
-                        <footer>
-                            <small>♥ <?php echo $post['like_number'] ?></small>
-                            <?php
-                                $tagArray = explode(",", $post['taglist']);
-                                for ($i = 0; $i < sizeof($tagArray); $i++) {
-                                    echo "<a href=''>";
-                                    echo "#" . $tagArray[$i] . " " . "</a>";
-                                }
-                             ?>
-                        </footer>
+                        <footer><?php include 'footer.php';?></footer>
                     </article>
                 <?php } ?>
 

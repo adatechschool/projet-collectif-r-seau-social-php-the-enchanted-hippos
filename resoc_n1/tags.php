@@ -22,18 +22,10 @@
                     <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
                     <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
                 </ul>
-
             </nav>
         </header>
         <div id="wrapper">
             <?php
-            /**
-             * Cette page est similaire à wall.php ou feed.php 
-             * mais elle porte sur les mots-clés (tags)
-             */
-            /**
-             * Etape 1: Le mur concerne un mot-clé en particulier
-             */
             $tagId = intval($_GET['tag_id']);
             ?>
             <?php include 'connexionBd.php'; ?>

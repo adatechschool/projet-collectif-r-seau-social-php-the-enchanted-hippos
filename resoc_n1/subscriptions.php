@@ -22,7 +22,6 @@
                     <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
                     <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
                 </ul>
-
             </nav>
         </header>
         <div id="wrapper">
@@ -34,17 +33,13 @@
                         n° <?php echo intval($_GET['user_id']) ?>
                         suit.
                     </p>
-
                 </section>
             </aside>
             <main class='contacts'>
                 <?php
-                // Etape 1: récupérer l'id de l'utilisateur
                 $userId = intval($_GET['user_id']);
                 ?>
-                // Etape 2: se connecter à la base de donnée
                 <?php include 'connexionBd.php'; ?>
-                // Etape 3: récupérer le nom de l'utilisateur
                 <?php
                 $laQuestionEnSql = "
                     SELECT users.* 
@@ -54,18 +49,18 @@
                     GROUP BY users.id
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
-                // Etape 4: à vous de jouer
-                //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
+
                 while ($followedUser = $lesInformations->fetch_assoc())
                 {
-                    echo "<pre>" . print_r($followedUser,1) . "</pre>";
+                    //echo "<pre>" . print_r($followedUser,1) . "</pre>";
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>
                     <h3><?php echo $followedUser["alias"] ?></h3>
                     <p><?php echo $followedUser["id"] ?></p>                    
                 </article>
-              <?php } ?>
+              <?php 
+                } ?>
             </main>
         </div>
     </body>

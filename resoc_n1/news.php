@@ -35,11 +35,8 @@
         </aside>
         <main>         
             <?php include 'connexionBd.php'; ?>
-            // Etape 1: Ouvrir une connexion avec la base de donnée.
-            
-            <?php
-            // Etape 2: Poser une question à la base de donnée et récupérer ses informations
-           
+                     
+            <?php           
             $laQuestionEnSql = "
                 SELECT posts.content,
                 posts.created,
@@ -56,46 +53,31 @@
                 ORDER BY posts.created DESC  
                 LIMIT 5
                 ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
+            $lesInformations = $mysqli->query($laQuestionEnSql);            
             
-            // Vérification
-            if ( ! $lesInformations)
-            {
-                echo "<article>";
+                if ( ! $lesInformations)
+                {
                 echo("Échec de la requete : " . $mysqli->error);
-                echo("<p>Indice: Vérifiez la requete  SQL suivante dans phpmyadmin<code>$laQuestionEnSql</code></p>");
                 exit();
-            }
-
-            // Etape 3: Parcourir ces données et les ranger bien comme il faut dans du html
-            // NB: à chaque tour du while, la variable post ci dessous reçois les informations du post suivant.
-            while ($post = $lesInformations->fetch_assoc())
-            {
-                //la ligne ci-dessous doit etre supprimée mais regardez ce 
-                //qu'elle affiche avant pour comprendre comment sont organisées les information dans votre 
+                }
+            
+                while ($post = $lesInformations->fetch_assoc())
+                {
                 //echo "<pre>" . print_r($post, 1) . "</pre>";
-
-                // @todo : Votre mission c'est de remplacer les AREMPLACER par les bonnes valeurs
-                // ci-dessous par les bonnes valeurs cachées dans la variable $post 
-                // on vous met le pied à l'étrier avec created
-                // 
-                // avec le ? > ci-dessous on sort du mode php et on écrit du html comme on veut... mais en restant dans la boucle
                 ?>
                 <article>
                     <h3>
                         <time><?php echo $post['created'] ?></time>
                     </h3>
-                    <address><?php echo $post['author_name'] ?></address>
+                        <address><?php echo $post['author_name'] ?></address>
                     <div>
                         <p><?php echo $post['content'] ?></p>
                     </div>
                     <footer><?php include 'footer.php';?></footer>
                 </article>
                 <?php
-                // avec le <?php ci-dessus on retourne en mode php 
-            }// cette accolade ferme et termine la boucle while ouverte avant.
-            ?>
-
+                }
+                ?>
         </main>
     </div>
 </body>

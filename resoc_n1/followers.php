@@ -39,15 +39,20 @@
                 $lesInformations = $mysqli->query($laQuestionEnSql); 
                 while ($followingUser = $lesInformations->fetch_assoc())
                 {
-                    //echo "<pre>" . print_r($followingUser,1) . "</pre>";
+                    echo "<pre>" . print_r($followingUser,1) . "</pre>";
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>
-                    <h3><?php echo $followingUser["alias"] ?></h3>
-                    <p><?php echo $followingUser["id"] ?></p>                    
+                    <h3>
+                        <a href="wall.php?user_id=<?php echo $followingUser["id"] ?>" >
+                        <?php echo $followingUser["alias"] ?></a>
+                    </h3>
+                        <p><?php echo $followingUser["id"] ?></p>                    
                 </article>
               <?php } ?>
             </main>
         </div>
     </body>
 </html>
+
+<a href="wall.php?user_id=<?php echo $post['author_id'] ?>"><?php echo $post['author_name'] ?></a>

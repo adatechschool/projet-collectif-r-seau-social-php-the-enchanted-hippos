@@ -38,11 +38,13 @@
 
                 while ($followedUser = $lesInformations->fetch_assoc())
                 {
-                    //echo "<pre>" . print_r($followedUser,1) . "</pre>";
+                    echo "<pre>" . print_r($followedUser,1) . "</pre>";
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>
-                    <h3><?php echo $followedUser["alias"] ?></h3>
+                    <h3><a href="wall.php?user_id=<?php echo $followedUser["id"] ?>" >
+                        <?php echo $followedUser["alias"] ?></a>
+                    </h3>
                     <p><?php echo $followedUser["id"] ?></p>                    
                 </article>
               <?php 

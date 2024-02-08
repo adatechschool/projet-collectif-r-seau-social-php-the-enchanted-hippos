@@ -32,6 +32,27 @@
                 </section>
             </aside>
             <main>
+
+                <article>
+                    <form action="usurpedpost.php" method="post">
+                        <input type='hidden' name='???' value='achanger'>
+                            <dl>
+                                <dt><label for='auteur'>Auteur</label></dt>
+                                    <dd><select name='auteur'>
+                                        <?php
+                                        foreach ($listAuteurs as $id => $alias)
+                                            echo "<option value='$id'>$alias</option>";
+                                        ?>
+                                        </select>
+                                    </dd>
+                                <dt><label for='message'>Message</label>
+                                </dt>
+                                    <dd><textarea name='message'></textarea></dd>
+                            </dl>
+                        <input type='submit'>
+                        </form>  
+                </article>
+
                 <?php              
                 $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name, 

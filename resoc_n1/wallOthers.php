@@ -29,7 +29,34 @@
                     <p>Sur cette page vous trouverez tous les messages de : <?php echo $user['alias'] ?>
                         (n° <?php echo $userId ?>)
                     </p>
-                    <button>Suivre</button>
+                    
+                    <?php 
+                        if(isset($_POST['Suivre'])) { 
+                            echo "This is Button1 that is selected";
+
+                            $ajoutAbonnementSql = "INSERT INTO followers "
+                                . "(id, followed_user_id, following_user_id) "
+                                . "VALUES (NULL, "
+                                . $userId . ", "
+                                . $currentUserId . ");"
+                                ; 
+
+
+                                $ok = $mysqli->query($ajoutAbonnementSql);
+                                if ( ! $ok)
+                                {
+                                    echo "Impossible d'ajouter l'abonnement" . $mysqli->error;
+                                } else
+                                {
+                                    echo "Abonnement réalisé";
+                                }
+                            }
+                         ?>
+                        
+                    <form method="post"> 
+                        <input type="submit" name="Suivre" class="button" value="Suivre" /> 
+                    </form>
+                    
                 </section>
             </aside>
             <main>

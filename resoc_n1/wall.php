@@ -33,18 +33,40 @@
             </aside>
             <main>
 
+            <?php
+            $enCoursDeTraitement = isset($_POST['message']);
+                    if ($enCoursDeTraitement)
+                    {
+                        //$authorId = $_POST['auteur'];
+                        $postContent = $_POST['message'];
+
+                       // $authorId = intval($mysqli->real_escape_string($authorId));
+                        $postContent = $mysqli->real_escape_string($postContent);
+                        
+                        $lInstructionSql = "INSERT INTO posts "
+                                . "(id, user_id, content, created, parent_id) "
+                                . "VALUES (NULL, "
+                                . $currentUserId . ", "
+                                . "'" . $postContent . "', "
+                                . "NOW(), "
+                                . "NULL);"
+                                ;
+                       
+                        $ok = $mysqli->query($lInstructionSql);
+                        if ( ! $ok)
+                        {
+                            echo "Impossible d'ajouter le message." . $mysqli->error;
+                        } else
+                        {
+                            echo "Message posté !";
+                        }
+                    }
+                    ?>
+
                 <article>
-                    <form action="usurpedpost.php" method="post">
+                    <form action="wall.php?user_id=<?php echo $currentUserId ?>" method="post">
                         <input type='hidden' name='???' value='achanger'>
                             <dl>
-                                <dt><label for='auteur'>Auteur</label></dt>
-                                    <dd><select name='auteur'>
-                                        <?php
-                                        foreach ($listAuteurs as $id => $alias)
-                                            echo "<option value='$id'>$alias</option>";
-                                        ?>
-                                        </select>
-                                    </dd>
                                 <dt><label for='message'>Message</label>
                                 </dt>
                                     <dd><textarea name='message'></textarea></dd>

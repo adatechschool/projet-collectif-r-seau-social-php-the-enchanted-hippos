@@ -66,7 +66,7 @@
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
                         </h3>
-                        <address>par <a href="wall.php?user_id=<?php echo $post['author_id'] ?>"><?php echo $post['author_name'] ?></a></address>
+                        <address>par <a href="wallOthers.php?user_id=<?php echo $post['author_id'] ?>"><?php echo $post['author_name'] ?></a></address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>                                            

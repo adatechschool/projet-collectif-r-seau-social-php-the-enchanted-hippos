@@ -42,7 +42,7 @@
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>
-                    <h3><a href="wall.php?user_id=<?php echo $followedUser["id"] ?>" >
+                    <h3><a href="wallOthers.php?user_id=<?php echo $followedUser["id"] ?>" >
                         <?php echo $followedUser["alias"] ?></a>
                     </h3>
                     <p><?php echo $followedUser["id"] ?></p>                    

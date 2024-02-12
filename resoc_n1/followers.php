@@ -44,7 +44,7 @@
                 <article>
                     <img src="user.jpg" alt="blason"/>
                     <h3>
-                        <a href="wall.php?user_id=<?php echo $followingUser["id"] ?>" >
+                        <a href="wallOthers.php?user_id=<?php echo $followingUser["id"] ?>" >
                         <?php echo $followingUser["alias"] ?></a>
                     </h3>
                         <p><?php echo $followingUser["id"] ?></p>                    
@@ -54,5 +54,3 @@
         </div>
     </body>
 </html>
-
-<a href="wall.php?user_id=<?php echo $post['author_id'] ?>"><?php echo $post['author_name'] ?></a>

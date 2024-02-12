@@ -26,54 +26,13 @@
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous vos messages : <?php echo $user['alias'] ?>
+                    <p>Sur cette page vous trouverez tous les messages de : <?php echo $user['alias'] ?>
                         (n° <?php echo $userId ?>)
                     </p>
+                    <button>Suivre</button>
                 </section>
             </aside>
             <main>
-
-            <?php
-            $enCoursDeTraitement = isset($_POST['message']);
-                    if ($enCoursDeTraitement)
-                    {
-                        //$authorId = $_POST['auteur'];
-                        $postContent = $_POST['message'];
-
-                       // $authorId = intval($mysqli->real_escape_string($authorId));
-                        $postContent = $mysqli->real_escape_string($postContent);
-                        
-                        $lInstructionSql = "INSERT INTO posts "
-                                . "(id, user_id, content, created, parent_id) "
-                                . "VALUES (NULL, "
-                                . $currentUserId . ", "
-                                . "'" . $postContent . "', "
-                                . "NOW(), "
-                                . "NULL);"
-                                ;
-                       
-                        $ok = $mysqli->query($lInstructionSql);
-                        if ( ! $ok)
-                        {
-                            echo "Impossible d'ajouter le message." . $mysqli->error;
-                        } else
-                        {
-                            echo "Message posté !";
-                        }
-                    }
-                    ?>
-
-                <article>
-                    <form action="wall.php?user_id=<?php echo $currentUserId ?>" method="post">
-                        <input type='hidden' name='???' value='achanger'>
-                            <dl>
-                                <dt><label for='message'>Message</label>
-                                </dt>
-                                    <dd><textarea name='message'></textarea></dd>
-                            </dl>
-                        <input type='submit'>
-                        </form>  
-                </article>
 
                 <?php              
                 $laQuestionEnSql = "

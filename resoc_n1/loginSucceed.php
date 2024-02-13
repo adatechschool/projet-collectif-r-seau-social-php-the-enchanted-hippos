@@ -26,8 +26,8 @@
                                 . "WHERE "
                                 . "id = '" . $currentUserId . "'" 
                                 ;
-                        // Etape 6: Vérification de l'utilisateur
-                        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+                        //Vérification de l'utilisateur
+                        include 'connexionBd.php';
                         $res = $mysqli->query($lInstructionSql);
                         $user = $res->fetch_assoc();
                 ?>

@@ -12,6 +12,7 @@
         </header>
         <div id="wrapper">
             <?php
+            // récupérer l’id de l’utilisateurice dans l’url
             $userId = intval($_GET['user_id']);
             ?>
             <?php include 'connexionBd.php'; ?>
@@ -37,6 +38,7 @@
                     SELECT posts.content,
                     posts.created,
                     users.alias as author_name,
+                    posts.id as postId,
                     posts.user_id as author_id,  
                     count(likes.id) as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist, 
@@ -61,7 +63,7 @@
 
                 while ($post=$lesInformations->fetch_assoc())
                     {
-                        echo "<pre>" . print_r($post,1) . "</pre>";             
+                        //echo "<pre>" . print_r($post,1) . "</pre>";             
                 ?>                
                 <article>
                         <h3>

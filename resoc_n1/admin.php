@@ -16,18 +16,21 @@
             <aside>
                 <h2>Mots-clés</h2>
                 <?php                
+                
+                //récupère toutes les colonnes de la table "tags" avec une limite de 50
                 $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
-                
+                //vérifie la requête
                 if ( ! $lesInformations) 
                 {
                     echo("Échec de la requete : " . $mysqli->error);
                     exit();
                 }
 
+                //boucle while qui parcourt la liste des colonnes de la table "tags" pour afficher le contenu
                 while ($tag = $lesInformations->fetch_assoc())
                 {
-                //echo "<pre>" . print_r($tag, 1) . "</pre>";
+                //echo "<pre>" . print_r($tag, 1) . "</pre>"; //ligne qui affiche le tableau tag pour debug
                 ?>
                     <article>
                         <h3><?php echo $tag['label'] ?></h3>

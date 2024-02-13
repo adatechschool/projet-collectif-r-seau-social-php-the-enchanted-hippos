@@ -18,16 +18,13 @@
                     <p>Sur cette page vous trouverez la liste des personnes qui
                         suivent les messages de l'utilisatrice
                         n° <?php echo intval($_GET['user_id']) ?></p>
-
                 </section>
             </aside>
             <main class='contacts'>
                 <?php
                 $userId = intval($_GET['user_id']);
                 ?>
-                // Etape 2: se connecter à la base de donnée
                 <?php include 'connexionBd.php'; ?>
-                // Etape 3: récupérer le nom de l'utilisateur
                 <?php
                 $laQuestionEnSql = "
                     SELECT users.*
@@ -39,7 +36,7 @@
                 $lesInformations = $mysqli->query($laQuestionEnSql); 
                 while ($followingUser = $lesInformations->fetch_assoc())
                 {
-                    echo "<pre>" . print_r($followingUser,1) . "</pre>";
+                    //echo "<pre>" . print_r($followingUser,1) . "</pre>";
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>

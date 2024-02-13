@@ -27,7 +27,8 @@
                 SELECT posts.content,
                 posts.created,
                 posts.user_id as author_id,
-                users.alias as author_name,  
+                users.alias as author_name,
+                posts.id as postId,  
                 count(likes.id) as like_number,  
                 GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist, 
                 GROUP_CONCAT(DISTINCT tags.id) AS tagid

@@ -1,7 +1,7 @@
-
+<!-- vérifie et démarre une session si aucune en cours -->
 <?php 
 session_start();
-
+//si utilisateurice connecté·e stocker son id dans une variable sinon renvoie vers la page accesDenied.php
 if (isset($_SESSION['connected_id']) && $_SESSION['connected_id'] !== null) {
     $currentUserId = $_SESSION['connected_id']; 
 } else {

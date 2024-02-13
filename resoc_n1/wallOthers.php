@@ -32,15 +32,12 @@
                     
                     <?php 
                         if(isset($_POST['Suivre'])) { 
-                            echo "This is Button1 that is selected";
-
                             $ajoutAbonnementSql = "INSERT INTO followers "
                                 . "(id, followed_user_id, following_user_id) "
                                 . "VALUES (NULL, "
                                 . $userId . ", "
                                 . $currentUserId . ");"
                                 ; 
-
 
                                 $ok = $mysqli->query($ajoutAbonnementSql);
                                 if ( ! $ok)
@@ -52,7 +49,7 @@
                                 }
                             }
                          ?>
-                        
+                    <!-- formulaire pour créer le bouton "suivre"  -->
                     <form method="post"> 
                         <input type="submit" name="Suivre" class="button" value="Suivre" /> 
                     </form>
@@ -63,7 +60,8 @@
 
                 <?php              
                 $laQuestionEnSql = "
-                    SELECT posts.content, posts.created, users.alias as author_name, 
+                    SELECT posts.content, posts.created, users.alias as author_name,
+                    posts.id as postId, 
                     COUNT(likes.id) as like_number, 
                     GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist, 
                     GROUP_CONCAT(DISTINCT tags.id) AS tagid
@@ -84,7 +82,7 @@
 
                 while ($post = $lesInformations->fetch_assoc())
                 {
-                    echo "<pre>" . print_r($post, 1) . "</pre>";
+                    //echo "<pre>" . print_r($post, 1) . "</pre>";
                     ?>                
                     <article>
                         <h3>

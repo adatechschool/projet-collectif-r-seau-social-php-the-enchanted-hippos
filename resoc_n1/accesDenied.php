@@ -1,4 +1,7 @@
 
+<!-- redirection vers cette page lorsqu’il n’y a pas d’utilisateurice connecté·e 
+et propose un lien vers "login.php" -->
+
 <!doctype html>
 <html lang="fr">
     <head>

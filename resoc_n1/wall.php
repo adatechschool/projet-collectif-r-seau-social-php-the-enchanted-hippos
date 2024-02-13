@@ -34,13 +34,12 @@
             <main>
 
             <?php
+            //Récupère le message contenu dans le formulaire textarea
             $enCoursDeTraitement = isset($_POST['message']);
                     if ($enCoursDeTraitement)
                     {
-                        //$authorId = $_POST['auteur'];
                         $postContent = $_POST['message'];
-
-                       // $authorId = intval($mysqli->real_escape_string($authorId));
+                        //Pour éviter les injections SQL
                         $postContent = $mysqli->real_escape_string($postContent);
                         
                         $lInstructionSql = "INSERT INTO posts "
@@ -77,7 +76,8 @@
 
                 <?php              
                 $laQuestionEnSql = "
-                    SELECT posts.content, posts.created, users.alias as author_name, 
+                    SELECT posts.content, posts.created, users.alias as author_name,
+                    posts.id as postId, 
                     COUNT(likes.id) as like_number, 
                     GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist, 
                     GROUP_CONCAT(DISTINCT tags.id) AS tagid
@@ -98,7 +98,7 @@
 
                 while ($post = $lesInformations->fetch_assoc())
                 {
-                    echo "<pre>" . print_r($post, 1) . "</pre>";
+                    //echo "<pre>" . print_r($post, 1) . "</pre>";
                     ?>                
                     <article>
                         <h3>

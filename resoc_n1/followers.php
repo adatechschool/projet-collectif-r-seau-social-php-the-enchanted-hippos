@@ -15,7 +15,7 @@
                 <img src = "user.jpg" alt = "Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez la liste des personnes que vous suivez.
+                    <p>Sur cette page vous trouverez la liste des personnes qui vous suivent.
                     </p>
                 </section>
             </aside>

@@ -15,9 +15,7 @@
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Voici la liste des Êtres que l’utilisatrice
-                        n° <?php echo intval($_GET['user_id']) ?>
-                        suit.
+                    <p>Voici la liste des personnes que vous suivez.
                     </p>
                 </section>
             </aside>
@@ -38,7 +36,7 @@
 
                 while ($followedUser = $lesInformations->fetch_assoc())
                 {
-                    echo "<pre>" . print_r($followedUser,1) . "</pre>";
+                    //echo "<pre>" . print_r($followedUser,1) . "</pre>";
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>

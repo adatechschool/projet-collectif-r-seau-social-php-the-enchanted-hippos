@@ -27,8 +27,9 @@
                                 . $idDuPost . ");"
                                 ; 
 
-    //envoie la requête
+    //envoie la requête et rafraîchit la page
     $ok = $mysqli->query($ajoutjaime);
+    header("Refresh:0");
     }
 }?>
 

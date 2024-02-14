@@ -40,7 +40,7 @@
                     users.alias as author_name,
                     posts.id as postId,
                     posts.user_id as author_id,  
-                    count(likes.id) as like_number,  
+                    count(DISTINCT likes.id) as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist, 
                     GROUP_CONCAT(DISTINCT tags.id) AS tagid
                     FROM followers 

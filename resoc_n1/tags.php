@@ -39,7 +39,7 @@
                     posts.created,
                     posts.user_id as author_id,
                     users.alias as author_name,  
-                    count(likes.id) as like_number,  
+                    count(DISTINCT likes.id) as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist, 
                     GROUP_CONCAT(DISTINCT tags.id) AS tagid
                     FROM posts_tags as filter 

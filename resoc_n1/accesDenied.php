@@ -17,8 +17,8 @@ et propose un lien vers "login.php" -->
         <div id="wrapper" >
 
             <aside>
-                <h2>Présentation</h2>
-                <p>Va vers <a href="login.php?user_id=">Login</a> </p>
+                <h2>Vous n'êtes pas connecté·e</h2>
+                <p>Veuillez vous <a href="login.php?user_id=">identifiez</a> pour continuer.</p>
             </aside>
             
         </div>

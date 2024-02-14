@@ -40,8 +40,8 @@ session_start();?>
         <div id="wrapper" >
 
             <aside>
-                <h2>Présentation</h2>
-                <p>Bienvenu sur notre réseau social.</p>
+                <h2>Bienvenue sur "Mon Petit Coin Douillet"</h2>
+                <p>Le réseau social pour les fan·es de Tiny House !</p>
             </aside>
             <main>
                 <article>

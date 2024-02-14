@@ -33,7 +33,7 @@
     }
 }?>
 
- <small>♥ <?php echo $post['like_number'] ?></small>
+ <small class="jaime">♥ <?php echo $post['like_number'] ?></small>
  
 <!-- affiche les tag en explosant les string récupérées de la requête et en bouclant dessus -->
 <?php 
